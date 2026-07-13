@@ -766,7 +766,6 @@ body.search .kingster-not-found-wrap {
   font-family: inherit;
 }
 
-/* Judul section */
 .unnestv-youtube__section-title {
   width: min(100%, 1180px);
   margin: 0 auto 28px !important;
@@ -781,11 +780,9 @@ body.search .kingster-not-found-wrap {
   text-transform: none;
 }
 
-/* Layout utama: player kiri dan playlist kanan */
 .unnestv-youtube__layout {
   display: flex;
   width: 100%;
-  max-width: 1180px;
   height: 450px;
   margin: 0 auto;
   padding: 0;
@@ -796,7 +793,6 @@ body.search .kingster-not-found-wrap {
   box-shadow: none;
 }
 
-/* Player video utama */
 .unnestv-youtube__video-player {
   display: block;
   flex: 1 1 auto;
@@ -819,7 +815,6 @@ body.search .kingster-not-found-wrap {
   background-color: #000;
 }
 
-/* Panel playlist di sisi kanan */
 .unnestv-youtube__playlist-panel {
   display: flex;
   flex: 0 0 420px;
@@ -833,7 +828,6 @@ body.search .kingster-not-found-wrap {
   background-color: var(--unnestv-youtube-panel-background);
 }
 
-/* Header playlist */
 .unnestv-youtube__playlist-header {
   display: flex;
   flex: 0 0 auto;
@@ -866,7 +860,6 @@ body.search .kingster-not-found-wrap {
   color: #fff !important;
 }
 
-/* Daftar kartu video */
 .unnestv-youtube__video-list {
   display: flex;
   flex: 1 1 auto;
@@ -890,7 +883,6 @@ body.search .kingster-not-found-wrap {
   height: 0;
 }
 
-/* Satu kartu video */
 .unnestv-youtube__video-card {
   display: flex;
   flex: 0 0 auto;
@@ -918,7 +910,9 @@ body.search .kingster-not-found-wrap {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  transition: background-color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
 }
 
 .unnestv-youtube__video-card::before,
@@ -944,7 +938,6 @@ body.search .kingster-not-found-wrap {
   outline-offset: 2px;
 }
 
-/* Kartu video yang sedang diputar */
 .unnestv-youtube__video-card.is-selected {
   background-color: var(--unnestv-youtube-card-background) !important;
 }
@@ -953,7 +946,6 @@ body.search .kingster-not-found-wrap {
   background-color: var(--unnestv-youtube-card-hover-background) !important;
 }
 
-/* Area thumbnail */
 .unnestv-youtube__thumbnail-wrapper {
   position: relative;
   display: block;
@@ -980,12 +972,10 @@ body.search .kingster-not-found-wrap {
   transition: transform 250ms ease;
 }
 
-.unnestv-youtube__video-card:hover
-.unnestv-youtube__thumbnail-wrapper img {
+.unnestv-youtube__video-card:hover .unnestv-youtube__thumbnail-wrapper img {
   transform: scale(1.02);
 }
 
-/* Badge LIVE dan AKAN DATANG */
 .unnestv-youtube__status-badge {
   position: absolute;
   top: 8px;
@@ -1012,7 +1002,6 @@ body.search .kingster-not-found-wrap {
   color: var(--unnestv-youtube-panel-background) !important;
 }
 
-/* Informasi judul dan tanggal video */
 .unnestv-youtube__video-information {
   display: block;
   width: 100%;
@@ -1050,7 +1039,6 @@ body.search .kingster-not-found-wrap {
   text-transform: none;
 }
 
-/* Pesan loading, kosong, atau error */
 .unnestv-youtube__status-message {
   width: 100%;
   margin: 0 !important;
@@ -1059,11 +1047,6 @@ body.search .kingster-not-found-wrap {
   font-size: 14px !important;
   line-height: 1.5 !important;
 }
-
-/* =========================================================
-   TABLET DAN MOBILE
-   Player di atas, playlist horizontal di bawah.
-   ========================================================= */
 
 @media only screen and (max-width: 767px) {
   .unnestv-youtube__section-title {
