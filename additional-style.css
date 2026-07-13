@@ -766,20 +766,6 @@ body.search .kingster-not-found-wrap {
   font-family: inherit;
 }
 
-.unnestv-youtube__section-title {
-  width: min(100%, 1180px);
-  margin: 0 auto 28px !important;
-  padding: 0 16px;
-  color: #111827 !important;
-  font-family: inherit;
-  font-size: clamp(26px, 2.5vw, 34px) !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  letter-spacing: 0 !important;
-  text-align: center;
-  text-transform: none;
-}
-
 .unnestv-youtube__layout {
   display: flex;
   width: 100%;
@@ -1049,12 +1035,6 @@ body.search .kingster-not-found-wrap {
 }
 
 @media only screen and (max-width: 767px) {
-  .unnestv-youtube__section-title {
-    margin-bottom: 20px !important;
-    padding-right: 16px;
-    padding-left: 16px;
-    font-size: 24px !important;
-  }
 
   .unnestv-youtube__layout {
     flex-direction: column;
