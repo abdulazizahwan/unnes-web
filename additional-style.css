@@ -818,7 +818,7 @@ body.search .kingster-not-found-wrap {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   width: 100%;
   min-height: 66px;
   margin: 0;
