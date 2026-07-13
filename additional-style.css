@@ -830,13 +830,21 @@ body.search .kingster-not-found-wrap {
   line-height: 1.2 !important;
 }
 
-.unnestv-youtube__playlist-header svg {
+.unnestv-youtube__channel-image {
   display: block;
-  flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
-  margin: 0;
-  color: #fff;
+  flex: 0 0 40px;
+  width: 40px !important;
+  max-width: 40px !important;
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background-color: #fff;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: none !important;
 }
 
 .unnestv-youtube__channel-name {
