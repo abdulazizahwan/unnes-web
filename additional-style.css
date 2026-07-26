@@ -739,15 +739,6 @@ body.search .kingster-not-found-wrap {
   }
 }
 
-@media only screen and (min-width: 1261px) {
-  .unnes-max-mobile-holder,
-  #mega-menu-wrap-mobile_menu,
-  #mega-menu-mobile_menu,
-  #kingster-mobile-menu {
-    display: none !important;
-  }
-}
-
 .unnestv-youtube,
 .unnestv-youtube * {
   box-sizing: border-box;
