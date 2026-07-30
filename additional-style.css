@@ -870,39 +870,37 @@ body.search .kingster-not-found-wrap {
 }
 
 /* =========================================================
-   UNNES HELPDESK — PROMPT AND AGNES BUTTON ONLY
+   UNNES HELPDESK — PROMPT AND AGNES BUTTON
    ========================================================= */
 
 :root {
-  --unnes-helpdesk-size: 45px;
-  --unnes-helpdesk-right: 30px;
-  --unnes-helpdesk-bottom: 87px;
-  --unnes-helpdesk-gap: 12px;
-  --unnes-helpdesk-bg: #005cb1;
+  --unnes-helpdesk-background: #005cb1;
   --unnes-helpdesk-safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-
 /* =========================================================
-   AGNES FLOATING BUTTON
+   AGNES FLOATING BUTTON — DESKTOP
    ========================================================= */
 
-#unnes-helpdesk-fab {
+html body #unnes-helpdesk-fab {
   position: fixed !important;
 
-  right: var(--unnes-helpdesk-right) !important;
-  bottom: calc(
-    var(--unnes-helpdesk-bottom) +
-    var(--unnes-helpdesk-safe-bottom)
-  ) !important;
+  /*
+   * Disamakan dengan posisi horizontal
+   * tombol back-to-top Kingster.
+   */
+  top: auto !important;
+  right: 30px !important;
+  bottom: calc(87px + var(--unnes-helpdesk-safe-bottom)) !important;
+  left: auto !important;
 
-  width: var(--unnes-helpdesk-size) !important;
-  min-width: var(--unnes-helpdesk-size) !important;
-  max-width: var(--unnes-helpdesk-size) !important;
+  width: 45px !important;
+  min-width: 45px !important;
+  max-width: 45px !important;
 
-  height: var(--unnes-helpdesk-size) !important;
-  min-height: var(--unnes-helpdesk-size) !important;
-  max-height: var(--unnes-helpdesk-size) !important;
+  height: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
 
   display: block !important;
 
@@ -916,7 +914,10 @@ body.search .kingster-not-found-wrap {
   border: 0 !important;
   border-radius: 50% !important;
 
-  /* Badge merah dapat keluar dari lingkaran. */
+  /*
+   * Wajib visible agar badge merah dapat
+   * berada di luar lingkaran avatar.
+   */
   overflow: visible !important;
 
   opacity: 1 !important;
@@ -929,32 +930,42 @@ body.search .kingster-not-found-wrap {
 
   isolation: isolate;
 
-  transition: transform 200ms ease;
+  /*
+   * Mencegah transform dari theme atau
+   * CSS lama menggeser tombol.
+   */
+  transform: none !important;
+
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
 }
 
-@media (hover: hover) {
-  #unnes-helpdesk-fab:hover {
-    transform: translateY(-2px);
+/* Hover hanya diterapkan pada perangkat dengan mouse */
+
+@media (hover: hover) and (pointer: fine) {
+  html body #unnes-helpdesk-fab:hover {
+    transform: translateY(-2px) !important;
     text-decoration: none !important;
   }
 }
 
-#unnes-helpdesk-fab:focus {
+html body #unnes-helpdesk-fab:focus {
   text-decoration: none !important;
 }
 
-#unnes-helpdesk-fab:focus-visible {
+html body #unnes-helpdesk-fab:focus-visible {
   outline: 3px solid #ffcc00 !important;
   outline-offset: 5px !important;
 }
-
 
 /* =========================================================
    AVATAR CIRCLE
    ========================================================= */
 
-#unnes-helpdesk-fab .unnes-helpdesk-avatar {
+html body #unnes-helpdesk-fab .unnes-helpdesk-avatar {
   position: absolute !important;
+
   inset: 0 !important;
 
   display: block !important;
@@ -967,12 +978,15 @@ body.search .kingster-not-found-wrap {
   padding: 0 !important;
   margin: 0 !important;
 
-  background-color: var(--unnes-helpdesk-bg) !important;
+  background-color: var(--unnes-helpdesk-background) !important;
 
   border: 0 !important;
   border-radius: 50% !important;
 
-  /* Hanya gambar Agnes yang dipotong menjadi lingkaran. */
+  /*
+   * Pemotongan gambar hanya dilakukan
+   * pada wrapper avatar.
+   */
   overflow: hidden !important;
 
   opacity: 1 !important;
@@ -985,22 +999,27 @@ body.search .kingster-not-found-wrap {
   pointer-events: none !important;
 }
 
-
 /* =========================================================
    AGNES IMAGE
    ========================================================= */
 
-#unnes-helpdesk-fab .unnes-helpdesk-avatar img {
+html body #unnes-helpdesk-fab .unnes-helpdesk-avatar img {
   position: absolute !important;
 
   top: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
   left: 0 !important;
 
   display: block !important;
 
   width: 100% !important;
-  height: 100% !important;
+  min-width: 100% !important;
   max-width: none !important;
+
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: none !important;
 
   padding: 0 !important;
   margin: 0 !important;
@@ -1015,39 +1034,47 @@ body.search .kingster-not-found-wrap {
   object-position: center 16% !important;
 
   transform: translateY(6%) scale(1.45) !important;
+
   transform-origin: center center !important;
 
   z-index: 1 !important;
 
   pointer-events: none !important;
   user-select: none !important;
+  -webkit-user-drag: none;
 
   transition: transform 200ms ease;
 }
 
-@media (hover: hover) {
-  #unnes-helpdesk-fab:hover .unnes-helpdesk-avatar img {
+@media (hover: hover) and (pointer: fine) {
+  html body #unnes-helpdesk-fab:hover .unnes-helpdesk-avatar img {
     transform: translateY(6%) scale(1.52) !important;
   }
 }
-
 
 /* =========================================================
    RED NOTIFICATION BADGE
    ========================================================= */
 
-#unnes-helpdesk-fab::after {
+html body #unnes-helpdesk-fab::after {
   content: "" !important;
 
   position: absolute !important;
 
   top: -5px !important;
   right: -5px !important;
+  bottom: auto !important;
+  left: auto !important;
 
   display: block !important;
 
   width: 11px !important;
+  min-width: 11px !important;
+  max-width: 11px !important;
+
   height: 11px !important;
+  min-height: 11px !important;
+  max-height: 11px !important;
 
   box-sizing: content-box !important;
 
@@ -1066,53 +1093,41 @@ body.search .kingster-not-found-wrap {
   pointer-events: none !important;
 }
 
-
 /* =========================================================
-   HELPDESK PROMPT
+   HELPDESK PROMPT — DESKTOP
    ========================================================= */
 
-#unnes-helpdesk-prompt {
+html body #unnes-helpdesk-prompt {
   position: fixed !important;
 
   /*
-   * Prompt berada di sebelah kiri Agnes:
-   * 30px + 45px + 12px = 87px dari kanan.
+   * Tombol Agnes:
+   * right 30px, width 45px, gap 12px.
+   *
+   * 30 + 45 + 12 = 87px.
    */
-  right: calc(
-    var(--unnes-helpdesk-right) +
-    var(--unnes-helpdesk-size) +
-    var(--unnes-helpdesk-gap)
-  ) !important;
-
-  /*
-   * Prompt dan Agnes memakai bottom yang sama,
-   * sehingga sejajar secara vertikal.
-   */
-  bottom: calc(
-    var(--unnes-helpdesk-bottom) +
-    var(--unnes-helpdesk-safe-bottom)
-  ) !important;
+  top: auto !important;
+  right: 87px !important;
+  bottom: calc(87px + var(--unnes-helpdesk-safe-bottom)) !important;
+  left: auto !important;
 
   width: max-content !important;
 
-  max-width: min(
-    380px,
-    calc(
-      100vw -
-      var(--unnes-helpdesk-right) -
-      var(--unnes-helpdesk-size) -
-      var(--unnes-helpdesk-gap) -
-      20px
-    )
-  ) !important;
+  max-width: min(380px, calc(100vw - 120px)) !important;
 
   min-width: 0 !important;
-  min-height: var(--unnes-helpdesk-size) !important;
+
+  /*
+   * Tinggi minimum sama dengan diameter
+   * tombol Agnes agar bagian bawah sejajar.
+   */
+  min-height: 45px !important;
   height: auto !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
+
   gap: 10px !important;
 
   box-sizing: border-box !important;
@@ -1120,7 +1135,8 @@ body.search .kingster-not-found-wrap {
   padding: 0 7px 0 16px !important;
   margin: 0 !important;
 
-  background: var(--unnes-helpdesk-bg) !important;
+  background: var(--unnes-helpdesk-background) !important;
+
   color: #ffffff !important;
 
   border: 0 !important;
@@ -1140,8 +1156,9 @@ body.search .kingster-not-found-wrap {
   visibility: hidden;
   pointer-events: none;
 
-  transform: translateX(12px) scale(0.98);
-  transform-origin: right center;
+  transform: translateX(12px) scale(0.98) !important;
+
+  transform-origin: right center !important;
 
   transition:
     opacity 250ms ease,
@@ -1149,7 +1166,9 @@ body.search .kingster-not-found-wrap {
     transform 250ms ease;
 }
 
-#unnes-helpdesk-prompt.is-visible {
+/* Prompt visible */
+
+html body #unnes-helpdesk-prompt.is-visible {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
@@ -1157,17 +1176,21 @@ body.search .kingster-not-found-wrap {
   transform: translateX(0) scale(1) !important;
 }
 
-
 /* =========================================================
    GREEN STATUS INDICATOR
    ========================================================= */
 
-#unnes-helpdesk-prompt .unnes-helpdesk-status {
+html body #unnes-helpdesk-prompt .unnes-helpdesk-status {
   display: block !important;
   flex: 0 0 auto !important;
 
   width: 9px !important;
+  min-width: 9px !important;
+  max-width: 9px !important;
+
   height: 9px !important;
+  min-height: 9px !important;
+  max-height: 9px !important;
 
   padding: 0 !important;
   margin: 0 !important;
@@ -1180,12 +1203,11 @@ body.search .kingster-not-found-wrap {
   box-shadow: 0 0 0 3px rgba(25, 217, 139, 0.08) !important;
 }
 
-
 /* =========================================================
    PROMPT LINK
    ========================================================= */
 
-#unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
+html body #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
   display: block !important;
   flex: 1 1 auto !important;
 
@@ -1206,25 +1228,26 @@ body.search .kingster-not-found-wrap {
   line-height: inherit !important;
 
   text-decoration: none !important;
+
   white-space: nowrap !important;
 
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
-#unnes-helpdesk-prompt .unnes-helpdesk-prompt-link:hover,
-#unnes-helpdesk-prompt .unnes-helpdesk-prompt-link:focus {
+html body #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link:hover,
+html body #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link:focus {
   background: transparent !important;
   color: #ffffff !important;
+
   text-decoration: none !important;
 }
-
 
 /* =========================================================
    CLOSE BUTTON
    ========================================================= */
 
-#unnes-helpdesk-prompt-close {
+html body #unnes-helpdesk-prompt-close {
   all: unset !important;
 
   flex: 0 0 29px !important;
@@ -1256,6 +1279,7 @@ body.search .kingster-not-found-wrap {
   font-size: 25px !important;
   font-weight: 300 !important;
   line-height: 1 !important;
+
   text-align: center !important;
 
   box-shadow: none !important;
@@ -1263,81 +1287,139 @@ body.search .kingster-not-found-wrap {
   cursor: pointer !important;
 }
 
-#unnes-helpdesk-prompt-close:hover {
+html body #unnes-helpdesk-prompt-close:hover {
   background: rgba(255, 255, 255, 0.1) !important;
+
   color: #ffffff !important;
 }
 
-#unnes-helpdesk-prompt-close:focus-visible {
+html body #unnes-helpdesk-prompt-close:focus-visible {
   color: #ffffff !important;
 
   outline: 2px solid #ffcc00 !important;
   outline-offset: 1px !important;
 }
 
-
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media screen and (max-width: 767px) {
-  :root {
+  /*
+   * Back-to-top Kingster diasumsikan:
+   *
+   * bottom: 20px
+   * height: 42px
+   * gap: 10px
+   *
+   * Posisi Helpdesk:
+   * 20 + 42 + 10 = 72px.
+   */
+
+  /* Agnes button mobile */
+
+  html body #unnes-helpdesk-fab {
+    top: auto !important;
+    right: 15px !important;
+    bottom: calc(72px + var(--unnes-helpdesk-safe-bottom)) !important;
+    left: auto !important;
+
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+
     /*
-     * Back-to-top diasumsikan:
-     * bottom 20px + tinggi 42px + jarak 10px
-     * = Helpdesk bottom 72px.
+     * Mencegah transform desktop atau theme
+     * menggeser avatar pada touchscreen.
      */
-    --unnes-helpdesk-size: 42px;
-    --unnes-helpdesk-right: 15px;
-    --unnes-helpdesk-bottom: 72px;
-    --unnes-helpdesk-gap: 10px;
+    transform: none !important;
   }
 
-  #unnes-helpdesk-fab .unnes-helpdesk-avatar img {
+  /* Agnes image mobile */
+
+  html body #unnes-helpdesk-fab .unnes-helpdesk-avatar img {
     object-position: center 15% !important;
+
     transform: translateY(5%) scale(1.38) !important;
   }
 
-  #unnes-helpdesk-fab::after {
+  /* Red badge mobile */
+
+  html body #unnes-helpdesk-fab::after {
     top: -4px !important;
     right: -4px !important;
 
     width: 8px !important;
+    min-width: 8px !important;
+    max-width: 8px !important;
+
     height: 8px !important;
+    min-height: 8px !important;
+    max-height: 8px !important;
 
     border-width: 3px !important;
   }
 
-  #unnes-helpdesk-prompt {
-    max-width: calc(
-      100vw -
-      var(--unnes-helpdesk-right) -
-      var(--unnes-helpdesk-size) -
-      var(--unnes-helpdesk-gap) -
-      10px
-    ) !important;
+  /* Prompt mobile */
 
-    min-height: var(--unnes-helpdesk-size) !important;
+  html body #unnes-helpdesk-prompt {
+    /*
+     * Prompt:
+     * right 15px + avatar 42px + gap 10px
+     * = 67px.
+     */
+    top: auto !important;
+    right: 67px !important;
+    bottom: calc(72px + var(--unnes-helpdesk-safe-bottom)) !important;
+    left: auto !important;
+
+    width: max-content !important;
+
+    max-width: calc(100vw - 82px) !important;
+
+    min-width: 0 !important;
+    min-height: 42px !important;
+    height: auto !important;
 
     gap: 8px !important;
 
     padding: 0 6px 0 13px !important;
 
     font-size: 13px !important;
+    line-height: 1.25 !important;
   }
 
-  #unnes-helpdesk-prompt .unnes-helpdesk-status {
+  /* Status indicator mobile */
+
+  html body #unnes-helpdesk-prompt .unnes-helpdesk-status {
     width: 8px !important;
+    min-width: 8px !important;
+    max-width: 8px !important;
+
     height: 8px !important;
+    min-height: 8px !important;
+    max-height: 8px !important;
   }
 
-  #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
+  /* Prompt link mobile */
+
+  html body #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
     padding: 10px 0 !important;
+
     white-space: nowrap !important;
+
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
-  #unnes-helpdesk-prompt-close {
-    flex-basis: 27px !important;
+  /* Close button mobile */
+
+  html body #unnes-helpdesk-prompt-close {
+    flex: 0 0 27px !important;
 
     width: 27px !important;
     min-width: 27px !important;
@@ -1351,24 +1433,32 @@ body.search .kingster-not-found-wrap {
   }
 }
 
-
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
 @media screen and (max-width: 380px) {
-  #unnes-helpdesk-prompt {
+  html body #unnes-helpdesk-prompt {
+    /*
+     * Tetap menyisakan ruang sekitar 15px
+     * di sisi kiri layar.
+     */
+    right: 67px !important;
+    max-width: calc(100vw - 82px) !important;
+
     gap: 7px !important;
-    padding-left: 11px !important;
+
+    padding: 0 5px 0 11px !important;
+
     font-size: 12px !important;
   }
 
-  #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
+  html body #unnes-helpdesk-prompt .unnes-helpdesk-prompt-link {
     max-width: 190px !important;
   }
 
-  #unnes-helpdesk-prompt-close {
-    flex-basis: 25px !important;
+  html body #unnes-helpdesk-prompt-close {
+    flex: 0 0 25px !important;
 
     width: 25px !important;
     min-width: 25px !important;
@@ -1382,16 +1472,15 @@ body.search .kingster-not-found-wrap {
   }
 }
 
-
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  #unnes-helpdesk-fab,
-  #unnes-helpdesk-fab img,
-  #unnes-helpdesk-prompt,
-  #unnes-helpdesk-prompt-close {
+  html body #unnes-helpdesk-fab,
+  html body #unnes-helpdesk-fab img,
+  html body #unnes-helpdesk-prompt,
+  html body #unnes-helpdesk-prompt-close {
     transition: none !important;
   }
 }
